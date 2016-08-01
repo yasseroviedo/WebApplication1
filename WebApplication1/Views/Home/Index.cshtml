@@ -1,0 +1,93 @@
+﻿@{
+
+     ViewBag.Title = "Country list";
+}
+
+<h2>Countries List</h2>
+<script src="~/Scripts/angular.js"></script>
+<script src="~/Scripts/Countries.js"></script>
+<ul>
+        @foreach (string country in ViewBag.Countries)
+        {
+            <li>@country</li>
+        }
+
+</ul>
+<div ng-app="appnew" ng-init="person={fName:'Derek',lName:'Banas'}; capitals=[{Country:'US',City:'New York'},{Country:'Russia',City:'Moscow'},{Country:'France',City:'Paris'}]">
+   <div ng-controller="citiesCtrl">
+    <input type="text" ng-model="first" />
+    <input type="text" ng-model="second" />
+    <button ng-click="updateValue()">Sum</button>
+     {{Calculation}}
+       
+    {{person.fName+" "+person.lName}}
+
+    <ul>
+        <li ng-repeat="capital in capitals">
+            @*{{'Country '+capital.Country}}*@
+            {{'Country '+capital.Country+',City '+capital.City}}
+        </li>
+    </ul>
+       <table>
+           <tr>
+               <td>Country</td>
+               <td>City</td>
+           </tr>
+           <tr ng-repeat="capital in capitals">
+              
+               <td>{{capital.Country}}</td>
+               
+               <td>{{capital.City}}</td>
+               
+            </tr>
+       </table>
+    
+    </div>
+    <div ng-controller="RamdomCtrl">
+        <span>Random1</span>{{bad}}
+        <span>Random2</span>{{good}}
+    </div>
+    <div ng-controller="Groceries">
+        <li ng-repeat="grocery in listOfProducts" ng-if="$index>-1">
+        {{grocery.item}}
+        </li>
+        <label>Change Item</label>
+        <input type="text" ng-model="listOfProducts[0].item" />
+    </div>
+
+    <div ng-controller="List">
+        <ng-include src="~/ulgrocerielist.cshtml"></ng-include>
+        <input type="checkbox" ng-model="showList" />
+        <ng-include src="getList()"></ng-include>
+    </div>
+    <input type="text" ng-model="someNumber" />
+    <div ng-switch="someNumber">
+        <p><ng-witch-when="1">You entered 1</p>
+        <p><ng-switch-when ="2">You entered 2</p>
+        <p><ng-switch-when ="3">You entered 3</p>
+        <p><ng-switch-when ="4">You entered 4</p>
+    </div>
+
+    <div ng-controller="mouse">
+        
+        <input ng-click="click=click+1"/>
+        <h4>{{click}}</h4>
+    </div>
+    <div ng-controller="button1">
+
+        <button input ng-disabled="disablebutton">Button</button>
+
+        <input type="checkbox" ng-model="disablebutton"  />
+        
+    </div>
+
+    <div ng-controller="Groceries2">
+
+        <select ng-model="productSelected" ng-options="product.item for product in listOfProducts"></select>
+        <p>{{productSelected.purchased}}</p>
+   
+    </div>
+
+    
+
+</div>

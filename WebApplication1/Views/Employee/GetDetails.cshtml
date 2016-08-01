@@ -1,0 +1,17 @@
+﻿@model WebApplication1.Models.Employee
+
+@{
+    ViewBag.Title = "Employee Details";
+}
+
+<h2>Employee Details</h2>
+<table>
+    <tr>
+        <td>EmployeeID</td>
+        <td>Name</td>
+    </tr>
+    <tr>
+        <td>@Model.EmployeeId</td>
+        <td>@Model.Name</td>
+    </tr>
+</table>
